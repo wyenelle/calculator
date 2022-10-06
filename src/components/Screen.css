@@ -1,0 +1,13 @@
+.screen{
+    border: 1px solid black;
+    width: 95%;
+    height: 25%;
+    margin: auto;
+    
+}
+.textfit-screen{
+    display: flex;
+    justify-content: end;
+    padding: 8px;
+    
+}
