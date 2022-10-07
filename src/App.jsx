@@ -40,6 +40,7 @@ const delete_btn = () => {
   return (
     <calc_context.Provider value={{calculate,reset,value,updateValue,result,delete_btn}}>
     <div className="App">
+      
          <Wrapper />
     </div>
     </calc_context.Provider>

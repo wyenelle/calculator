@@ -1,6 +1,6 @@
 .wrapper{
     height: 100vh;
-    width: 70vw;
+    width: 75vw;
     padding: 10px;
     border: 1px solid black;
     text-align: center;
@@ -9,6 +9,14 @@
     background-color: #131a26;
 
     flex-direction: column;
+}
+.wrapper h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #eee;
+    text-align: left;
+    padding-left: 10px;
+    padding-bottom: 3px;
 }
 @media screen and (min-width : 650px){
     .wrapper{
