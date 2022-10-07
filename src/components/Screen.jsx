@@ -1,18 +1,23 @@
-import React, {useContext} from "react";
-import "./Screen.css";
-import { Textfit } from "react-textfit";
-import calc_context from "./context";
+import React, { useContext } from 'react'
+import './Screen.css'
+import { Textfit } from 'react-textfit'
+import calc_context from './context'
 
 
 const Screen = () => {
-  const {initialState} = useContext(calc_context)
-  return (
+const {value,result} = useContext(calc_context)
+ 
+return (
     <div className="screen">
-      <Textfit mode="single" max={90} className="textfit-screen">
-        {initialState}
-      </Textfit>
+        
+        <Textfit className='textfit-screen' mode='single' max={65}>
+{value || '0'} 
+
+</Textfit>
+<p className='screen-result'>{result? <span>{result}</span> : '' }</p>
+        
     </div>
-  );
-};
+  )
+}
 
 export default Screen

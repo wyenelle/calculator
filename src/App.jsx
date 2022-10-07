@@ -4,32 +4,41 @@ import calc_context from './components/context'
 import { useState } from 'react'
 
 function App() {
-  const [initialState,setInitilState] = useState([0])  
-  const [operators ,setOpertors] = useState('')
-  const operator = ['+','-','/','*','.']
+const [value,setValue] = useState('')
+const [result,setResult] = useState('')
 
- console.log(eval(initialState))
+const operators = [ '/','*','+','-','.','%']
 
- const operator_clicked = (number) => {
-  if(initialState[0] === 0){
-    return;
+
+// this function updates the state
+const updateValue = num => {
+  if(operators.includes(num) && value === '' || 
+  operators.includes(num) && operators.includes(value.slice(-1))
+  ){
+    return 
   }
-  return setInitilState(prev => [...prev,number])
- }
-  const clicked = (number) => {
-    
+  setValue(value + num)
 
-    //    Reminder to add finctionality for 0.n decimals
-    return(
-      setInitilState(prev => prev[0] === 0 ?  [ number] : [...prev , number])
-    )
+  if(!operators.includes(num)){
+    setResult(eval(value + num))
+  }
+}
+const calculate = () => (
+  setValue(result)
+  
+)
+const reset = () =>{
+  setValue('')
+  setResult('')
+}
+const delete_btn = () => {
+
+  const deleted_item =value ?  value.slice(0,-1) : setResult(0)
+  setValue(deleted_item)
 }
 
-const add = () => {
-  // adds state
-}
   return (
-    <calc_context.Provider value={{initialState,clicked,operator_clicked}}>
+    <calc_context.Provider value={{calculate,reset,value,updateValue,result,delete_btn}}>
     <div className="App">
          <Wrapper />
     </div>

@@ -1,30 +1,39 @@
-import React, { useContext, useState } from 'react'
-import './ButtonBox.css'
-import calc_context from './context'
-import Button from './Button'
+import React from "react";
+import "./ButtonBox.css";
+import Button from "./Button";
+import calc_context from "./context";
+import { useContext } from "react";
 
 const ButtonBox = () => {
-    const numbers = ['C','DEL','%','/',7,8,9,'*',4,5,6,'-',1,2,3,'+',0,'00','.','=']
-    const {operator_clicked,clicked,add} = useContext(calc_context)
-   
- 
+  const { updateValue, calculate, reset, delete_btn } =
+    useContext(calc_context);
+  let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
   return (
-    <section className="button-box">
+    <div className="button-box">
+      <div className="operators">
+        <button onClick={() => updateValue("/")}>/</button>
+        <button onClick={() => updateValue("*")}>*</button>
+        <button onClick={() => updateValue("+")}>+</button>
+        <button onClick={() => updateValue("-")}>-</button>
+      </div>
       
-      <button  onClick={() => operator_clicked('-')}> -</button>
-      <button  onClick={() => operator_clicked('+')}> + </button>
-      <button  onClick={() => operator_clicked('*')}> * </button>
-      <button  onClick={() => operator_clicked('/')}> / </button>
-      <button  onClick={() => clicked(1)}> 1 </button>
-      <button  onClick={() => clicked(2)}> 2 </button>
-        
-       {/* {
-        numbers.map((number,idx) => (
-          <Button number={number} key={idx} />
-        ))
-       } */}
-    </section>
-  )
-}
+      <div className="digits">
+        {numbers.map((number) => (
+          <Button
+            updateValue={updateValue}
+            number={number.toString()}
+            key={number}
+          />
+        ))}
+        <button onClick={() => updateValue(".")}>.</button>
+        <button onClick={() => updateValue("%")}>%</button>
+        <button className="reset" onClick={reset}>C</button>
+        <button className="delete" onClick={delete_btn}>DEL</button>
+        <button className="equals" onClick={calculate}>=</button>
 
-export default ButtonBox
+      </div>
+    </div>
+  );
+};
+
+export default ButtonBox;

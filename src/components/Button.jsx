@@ -1,17 +1,10 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './Button.css'
-import calc_context from './context'
 
-const Button = ({number}) => {
-  const {clicked,add} = useContext(calc_context)
 
+const Button = ({number,updateValue}) => {
   return (
-    <div className="button">
-      
-         <button id={number} onClick={() => clicked(number)}> {number} </button>
-      
-        
-    </div>
+    <button className='button' onClick={ () => updateValue(number)}>{number}</button>
   )
 }
 

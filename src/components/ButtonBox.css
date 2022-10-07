@@ -1,9 +1,53 @@
 .button-box{
-    border: 1px solid black;
+    border: 1px solid transparent;
     height: 70%;
     width: 95%;
     margin: auto;
-    padding-top: 1em;
+    padding: 10px;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    border-radius: 7px;
+    grid-template-columns: 1fr 3fr;
+    justify-content: center;
+    align-items: center;
+    background-color: #131a26;
+}
+.operators{
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+    color: white;
+    font-weight: 700;
+
+}
+.operators button{
+    border: 1px solid lightgray;
+    height:56px;
+    text-align: center;
+    width: 80px;
+    font-size: 24px;
+}
+.digits{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    
+}
+.digits button{
+    border: 1px solid lightgray;
+
+}
+.delete{
+    background-color: red;
+    font-weight: 600;
+}
+.equals{
+    background-color: green;
+    font-weight: 600;
+}
+.reset{
+    background-color: white;
+    color: black;
+    font-weight: 600;
 }
